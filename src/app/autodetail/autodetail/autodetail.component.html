@@ -1,0 +1,37 @@
+
+<p class="text-danger" *ngIf="!carro"> NO EXISTE EL VEHÍCULO </p>
+
+<div class="card m-5">
+  <div class="card-header">
+    <h2> {{carro?.marca}} </h2>
+<h3> {{carro?.modelo}}</h3>
+  </div>
+<div class="card-body">
+<img src="{{carro?.image}}" alt="{{carro?.modelo}}">
+<p>
+ Color: {{carro?.color}}
+</p>
+<p>
+  Kilometraje: {{carro?.kilometraje  }} km
+</p>
+<p>
+ Año: {{carro?.anio}}
+
+</p>
+
+<p>
+  Calificación: {{carro?.calificacion}}
+</p>
+
+<p>
+  Precio: {{carro?.precio }}
+  
+</p>
+</div>
+
+<!-- <div class="col-md-4 mb-4 ms-3">
+  <button class="btn btn-secondary" [routerLink]="['/']" > Volver</button>
+</div> -->
+
+
+</div>
