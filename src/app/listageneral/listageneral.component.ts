@@ -17,14 +17,15 @@ export class ListageneralComponent implements OnInit {
 
   listAutos: Auto []= [];
   constructor(private listaautosService: ListaautosService) {
-   this.listAutos= this.listaautosService.getAutos();
+   this.listaautosService.getAutos().subscribe(data =>{this.listAutos=data});
+   
    }
 
   
 
    deleteAuto(id: number): void {
     this.listaautosService.deleteAuto(id);
-    this.listAutos=this.listaautosService.getAutos();
+    this.listaautosService.getAutos();
    }
 
   ngOnInit(): void {
@@ -46,5 +47,12 @@ export class ListageneralComponent implements OnInit {
     auto.marca.toLowerCase().includes(this.search.toLowerCase())
     );
   } */
+
+
+  filtro: string = '';
+
+
+  
+
 }
 

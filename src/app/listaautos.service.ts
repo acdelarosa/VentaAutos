@@ -36,7 +36,7 @@ listautos: Auto [] =[
   image: 'https://www.clickheretesting.com/ParksLincolnTampa/research/2024/navigator/images/mlp-img-ext.jpg',
   id: 3,
   marca: 'Lincoln',
-  modelo: 'Navitagor',
+  modelo: 'Navigator',
   anio: 2024,
   color: 'negro',
   kilometraje: 15000,
@@ -45,12 +45,11 @@ listautos: Auto [] =[
 }
 ] 
 
-
-
+autosSubject = new BehaviorSubject(this.listautos);
 constructor() { }
 
-getAutos  (): Auto [] {
-return this.listautos
+getAutos  ()  {
+return this.autosSubject.asObservable();
 }
 
 getAutosbyId (id: number):Auto  | undefined {
@@ -60,22 +59,21 @@ return this.listautos.find((auto)=> auto.id==id);
 
 
 addAuto (auto: Auto): void {
+console.log('auto:', auto)
 this.listautos.push(auto);
+this.autosSubject.next(this.listautos);
+console.log('lista:', this.listautos)
 }
 
 
 
 deleteAuto(id:number): void {
 this.listautos=this.listautos.filter((auto)=> auto.id !== id);
+this.autosSubject.next(this.listautos);
 }
 
 
-/* listautos = this.listaFiltrada;
-search = '';
-buscarAutos(){
-  this.listautos=this.listaFiltrada.filter((auto)=> 
-  auto.marca.toLowerCase().includes(this.search.toLowerCase())
-  );*/
+
 } 
 
 

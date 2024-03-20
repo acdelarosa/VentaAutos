@@ -14,6 +14,14 @@ export class FormComponent implements OnInit {
   autoForm: FormGroup
   constructor(fb: FormBuilder, private  autosService: ListaautosService) {
     this.autoForm = fb.group({
+      Imagen: [
+        '',
+        [
+        Validators.required,
+        Validators.maxLength(400),
+        Validators.minLength(5),
+        ]
+      ],
       Marca: [
         '',
         [
@@ -73,20 +81,19 @@ export class FormComponent implements OnInit {
         Validators.pattern("^[0-9]*$"),
         ]
       ],
-      Imagen: [
-        '',
-        [
-        Validators.required,
-        Validators.maxLength(400),
-        Validators.minLength(5),
-        ]
-      ],
+     
     })
   }
 
   ngOnInit() {
   }
-onSubmit(){
+
+
+Submit(){
+   if (!this.autoForm.valid) {
+    console.log('no es válido');
+    return;
+  }
   this.autosService.addAuto({
     id: this.autosService.listautos.length +1,
     ...this.autoForm.value,

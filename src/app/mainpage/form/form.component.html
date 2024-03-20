@@ -1,4 +1,4 @@
-<form [formGroup]="autoForm" (ngSubmit)="onSubmit()" class="m-3">
+<form [formGroup]="autoForm" (ngSubmit)="Submit()" class="m-3">
   <div>
 
     <p class="h1"> Para agregar un nuevo vehículo ingrese la siguiente información: </p>
@@ -8,6 +8,15 @@
   </div>
 
   <div class="row-gap-3 m-5">
+
+    <input type="text" class="form-control w-50 mt-4" placeholder="Imagen del Vehículo" formControlName="Imagen">
+
+
+    <div class="alert alert-danger w-50 mt-4"
+      *ngIf="autoForm.get('Imagen')?.invalid && autoForm.get('Imagen')?.touched">
+      
+      Este campo es obligatorio
+    </div>
 
     <input type="text" class="form-control w-50 mt-4" placeholder="Marca del Vehículo" formControlName="Marca">
 
@@ -60,17 +69,11 @@
       Este campo es obligatorio y solo acepta 1 número
     </div>
 
-    <input type="text" class="form-control w-50 mt-4" placeholder="Imagen del Vehículo" formControlName="Imagen">
-
-
-    <div class="alert alert-danger w-50 mt-4"
-      *ngIf="autoForm.get('Imagen')?.invalid && autoForm.get('Imagen')?.touched">
-      Este campo es obligatorio
-    </div>
+  
 
   </div>
 
-  <button class="btn btn-primary" type="submit">
+  <button type="submit()" class="btn btn-primary" >
     Enviar form
   </button>
 
