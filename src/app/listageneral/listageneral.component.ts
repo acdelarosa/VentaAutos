@@ -38,6 +38,10 @@ export class ListageneralComponent implements OnInit {
     this.muestraImagen = !this.muestraImagen
   }
 
+  recepcion(dato: number){
+console.log('Dato:', dato)
+  }
+
 
  /*  listaFiltrada [] : Auto [];
   listautos ='';

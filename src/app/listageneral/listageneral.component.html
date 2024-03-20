@@ -51,7 +51,7 @@
             <td> {{ auto.kilometraje | number}}</td>
             <td> {{ auto.precio | currency}}</td>
             <td>
-              <app-calificacion [calificacion]="auto.calificacion"></app-calificacion>
+              <app-calificacion [calificacion]="auto.calificacion" (accion)="recepcion($event)"></app-calificacion>
             </td>
          
           </tr>
