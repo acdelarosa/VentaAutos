@@ -54,7 +54,7 @@ return this.autosSubject.asObservable();
 
 getVehiculos(filtro: any): Observable <Array <Auto>>{
 const escucha: Observable<Array <Auto>> = new Observable(escuchando =>{
-  let lista = this.listautos.filter(elem => elem.marca.toLowerCase().includes(filtro))
+  let lista = this.listautos.filter(elem => elem.marca.toLowerCase().includes(filtro.toLowerCase()))
   escuchando.next(lista)
 })
 

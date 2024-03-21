@@ -9,6 +9,20 @@ import { ListaautosService } from '../listaautos.service';
 })
 export class ListageneralComponent implements OnInit {
 
+  
+  /* filtro: string = ''; */
+
+
+  private _filtro: string = '';
+get filtro(){
+  return this._filtro
+}
+
+set filtro(data:string){
+  this._filtro=data
+  this.consultaVehiculos();
+}
+
   @Input() valor: string = '';
   
 
@@ -64,8 +78,6 @@ console.log('Dato:', dato)
     );
   } */
 
-
-  filtro: string = '';
 
 
   
