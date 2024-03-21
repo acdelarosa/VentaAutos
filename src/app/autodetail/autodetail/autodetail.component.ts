@@ -24,4 +24,7 @@ carro: Auto | undefined
     });
   }
 
+  recepcion(dato: number){
+    console.log('Dato:', dato)
+      }
 }

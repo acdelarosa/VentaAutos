@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ListaautosService } from '../../listaautos.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class FormComponent implements OnInit {
   
 
   autoForm: FormGroup
-  constructor(fb: FormBuilder, private  autosService: ListaautosService) {
+  constructor(fb: FormBuilder, private  autosService: ListaautosService, private route: ActivatedRoute,) {
     this.autoForm = fb.group({
       Imagen: [
         '',

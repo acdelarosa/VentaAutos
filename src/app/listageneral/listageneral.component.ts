@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, input } from '@angular/core';
 import { Auto } from '../interface/auto.interface';
 import { ListaautosService } from '../listaautos.service';
 
@@ -8,6 +8,10 @@ import { ListaautosService } from '../listaautos.service';
   styleUrls: ['./listageneral.component.css']
 })
 export class ListageneralComponent implements OnInit {
+
+  @Input() valor: string = '';
+  
+
 
   
 
@@ -28,9 +32,17 @@ export class ListageneralComponent implements OnInit {
     this.listaautosService.getAutos();
    }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.consultaVehiculos();
+
   }
 
+  consultaVehiculos(){
+
+    this.listaautosService.getVehiculos(this.filtro).subscribe(data =>{
+      this.listAutos = data;
+    })
+  }
 
 
   muestraImagen: boolean = true;

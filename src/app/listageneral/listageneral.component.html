@@ -11,10 +11,7 @@
           <label> Filtrar por</label>
         </div>
         <div class="col-md-4">
-          <input type="text" 
-          placeholder="Search" 
-          [(ngModel)]="filtro"
-          />
+          <input type="text" placeholder="Search" [(ngModel)]="filtro"  (blur)="consultaVehiculos()">
         </div>
       </div>
       <div class="row">
@@ -27,7 +24,7 @@
         <thead>
           <tr>
             <th scope="col">
-              <button class="btn btn-primary" (click)="toogleImage()" > {{muestraImagen ? 'Hide Image' : 'Show Image'}} 
+              <button class="btn btn-primary" (click)="toogleImage()"> {{muestraImagen ? 'Hide Image' : 'Show Image'}}
               </button>
             </th>
             <th>Id</th>
@@ -38,12 +35,13 @@
             <th scope="col">Kilometraje</th>
             <th scope="col">Precio</th>
             <th scope="col">Calificación</th>
+            <th scope="col">Botones</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let auto of listAutos">
-            <th> <img src="{{ auto.image }}"  srcset="{{auto.image}}"  class="img-fluid" *ngIf="muestraImagen"/></th>
-            <td> <a [routerLink]="['auto', auto.id]"> {{auto.id}}</a></td>
+            <th> <img src="{{ auto.image }}" srcset="{{auto.image}}" class="img-fluid" *ngIf="muestraImagen" /></th>
+            <td> {{auto.id}} <br> <button [routerLink]="['auto', auto.id]" class="btn btn-primary"> View</button></td>
             <td>{{ auto.marca }}</td>
             <td> {{ auto.modelo | lowercase}}</td>
             <td> {{ auto.anio }}</td>
@@ -53,7 +51,11 @@
             <td>
               <app-calificacion [calificacion]="auto.calificacion" (accion)="recepcion($event)"></app-calificacion>
             </td>
-         
+            <td>
+              <button class="btn btn-secondary">Editar</button>
+              <button class="btn btn-danger">Eliminar</button>
+            </td>
+
           </tr>
 
         </tbody>

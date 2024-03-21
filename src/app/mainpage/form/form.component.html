@@ -1,7 +1,8 @@
-<form [formGroup]="autoForm" (ngSubmit)="Submit()" class="m-3">
+<form [formGroup]="autoForm" (submit)="Submit()" class="m-3">
+
   <div>
 
-    <p class="h1"> Para agregar un nuevo vehículo ingrese la siguiente información: </p>
+    <p class="h1"> Creación de Vehículo</p>
 
 
 
@@ -9,72 +10,110 @@
 
   <div class="row-gap-3 m-5">
 
-    <input type="text" class="form-control w-50 mt-4" placeholder="Imagen del Vehículo" formControlName="Imagen">
+    <div>
+      <label for="staticCodigo" class="col-sm-2 col-form-label">Imagen:</label>
+
+      <input type="text" class="form-control w-50" placeholder="Imagen del Vehículo" formControlName="Imagen" name="Imagen">
 
 
-    <div class="alert alert-danger w-50 mt-4"
-      *ngIf="autoForm.get('Imagen')?.invalid && autoForm.get('Imagen')?.touched">
-      
-      Este campo es obligatorio
+      <div class="alert alert-danger w-50 mt-4"
+        *ngIf="autoForm.get('Imagen')?.invalid && autoForm.get('Imagen')?.touched">
+
+        Este campo es obligatorio
+      </div>
+
     </div>
 
-    <input type="text" class="form-control w-50 mt-4" placeholder="Marca del Vehículo" formControlName="Marca">
 
-    <div class="alert alert-danger w-50 mt-4" *ngIf="autoForm.get('Marca')?.invalid && autoForm.get('Marca')?.touched">
-      Este campo es obligatorio y debe tener entre 3 y 20 caractéres
+    <div>
+      <label for="staticCodigo" class="col-sm-2 col-form-label">Marca:</label>
+
+      <input type="text" class="form-control w-50" placeholder="Marca del Vehículo"  name="Marca" formControlName="Marca">
+
+      <div class="alert alert-danger w-50 mt-4"
+        *ngIf="autoForm.get('Marca')?.invalid && autoForm.get('Marca')?.touched">
+        Este campo es obligatorio y debe tener entre 3 y 20 caractéres
+      </div>
+
     </div>
 
 
-    <input type="text" class="form-control w-50 mt-4" placeholder="Modelo del Vehículo" formControlName="Modelo">
+    <div>
+      <label for="staticCodigo" class="col-sm-2 col-form-label">Modelo:</label>
+      <input type="text" class="form-control w-50" placeholder="Modelo del Vehículo" formControlName="Modelo"  name="Modelo">
 
-    <div class="alert alert-danger w-50 mt-4"
-      *ngIf="autoForm.get('Modelo')?.invalid && autoForm.get('Modelo')?.touched">
-      Este campo es obligatorio y debe tener entre 3 y 20 caractéres
+      <div class="alert alert-danger w-50 mt-4"
+        *ngIf="autoForm.get('Modelo')?.invalid && autoForm.get('Modelo')?.touched">
+        Este campo es obligatorio y debe tener entre 3 y 20 caractéres
+      </div>
     </div>
 
-    <input type="text" class="form-control w-50 mt-4" placeholder="Año del Vehículo" formControlName="Año">
+    <div>
+      <label for="staticCodigo" class="col-sm-2 col-form-label">Año:</label>
+      <input type="number" class="form-control w-50" placeholder="Año del Vehículo" formControlName="Año"  name="Año">
 
-    <div class="alert alert-danger w-50 mt-4" *ngIf="autoForm.get('Año')?.invalid && 
+      <div class="alert alert-danger w-50 mt-4" *ngIf="autoForm.get('Año')?.invalid && 
        autoForm.get('Año')?.touched">
-      Este campo es obligatorio y solo acepta números
+        Este campo es obligatorio y solo acepta números
+      </div>
     </div>
 
-    <input type="text" class="form-control w-50 mt-4" placeholder="Color del Vehículo" formControlName="Color">
 
-    <div class="alert alert-danger w-50 mt-4" *ngIf="autoForm.get('Color')?.invalid && autoForm.get('Color')?.touched">
-      Este campo es obligatorio y debe tener entre 3 y 25 caractéres
+    <div>
+      <label for="staticCodigo" class="col-sm-2 col-form-label">Color:</label>
+      <input type="text" class="form-control w-50" placeholder="Color del Vehículo" formControlName="Color" name="Color">
+      <div class="alert alert-danger w-50 mt-4"
+        *ngIf="autoForm.get('Color')?.invalid && autoForm.get('Color')?.touched">
+        Este campo es obligatorio y debe tener entre 3 y 25 caractéres
+      </div>
     </div>
 
-    <input type="text" class="form-control w-50 mt-4" placeholder="Kilometraje del Vehículo"
-      formControlName="Kilometraje">
 
-    <div class="alert alert-danger w-50 mt-4"
-      *ngIf="autoForm.get('Kilometraje')?.invalid && autoForm.get('Kilometraje')?.touched">
-      Este campo es obligatorio y solo acepta entre 3 y 20 números
+    <div>
+      <label for="staticCodigo" class="col-sm-2 col-form-label">Kilometraje:</label>
+      <input type="number" class="form-control w-50" placeholder="Kilometraje del Vehículo" formControlName="Kilometraje"  name="Kilometraje">
+      <div class="alert alert-danger w-50 mt-4"
+        *ngIf="autoForm.get('Kilometraje')?.invalid && autoForm.get('Kilometraje')?.touched">
+        Este campo es obligatorio y solo acepta entre 3 y 20 números
+      </div>
     </div>
 
-    <input type="text" class="form-control w-50 mt-4" placeholder="Precio del Vehículo" formControlName="Precio">
 
-    <div class="alert alert-danger w-50 mt-4"
-      *ngIf="autoForm.get('Precio')?.invalid && autoForm.get('Precio')?.touched">
-      Este campo es obligatorio y solo acepta entre 3 y 20 números
+    <div>
+      <label for="staticCodigo" class="col-sm-2 col-form-label">Precio:</label>
+      <input type="number" class="form-control w-50" placeholder="Precio del Vehículo" formControlName="Precio" name="Precio">
+
+      <div class="alert alert-danger w-50 mt-4"
+        *ngIf="autoForm.get('Precio')?.invalid && autoForm.get('Precio')?.touched">
+        Este campo es obligatorio y solo acepta entre 3 y 20 números
+      </div>
     </div>
 
-    <input type="text" class="form-control w-50 mt-4" placeholder="Calificación del Vehículo"
-      formControlName="Calificacion">
 
 
-    <div class="alert alert-danger w-50 mt-4"
-      *ngIf="autoForm.get('Calificación')?.invalid && autoForm.get('Calificación')?.touched">
-      Este campo es obligatorio y solo acepta 1 número
+
+    <div>
+      <label for="staticCodigo" class="col-sm-2 col-form-label">Calificación</label>
+      <input type="number" class="form-control w-50" placeholder="Calificación del Vehículo"
+        formControlName="Calificacion"  name="Calificación">
+      <div class="alert alert-danger w-50"
+        *ngIf="autoForm.get('Calificación')?.invalid && autoForm.get('Calificación')?.touched">
+        Este campo es obligatorio y solo acepta 1 número
+      </div>
     </div>
 
-  
+
 
   </div>
 
-  <button type="submit()" class="btn btn-primary" >
-    Enviar form
+  <div class="row">
+  <button type="submit()" class="btn btn-info">
+    Guardar
   </button>
-
+</div>
 </form>
+
+
+<div class="col-md-4 mb-4 ms-3">
+  <button class="btn btn-secondary" [routerLink]="['/']"> Volver</button>
+</div>

@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { Auto } from './interface/auto.interface';
 import { BehaviorSubject, Subject } from 'rxjs';
-
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -50,6 +50,15 @@ constructor() { }
 
 getAutos  ()  {
 return this.autosSubject.asObservable();
+}
+
+getVehiculos(filtro: any): Observable <Array <Auto>>{
+const escucha: Observable<Array <Auto>> = new Observable(escuchando =>{
+  let lista = this.listautos.filter(elem => elem.marca.toLowerCase().includes(filtro))
+  escuchando.next(lista)
+})
+
+return escucha
 }
 
 getAutosbyId (id: number):Auto  | undefined {

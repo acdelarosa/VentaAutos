@@ -23,7 +23,8 @@ import { CalificacionComponent } from './utilitarios/calificacion/calificacion.c
   providers: [],
   bootstrap: [AppComponent],
   exports:[
-    CalificacionComponent
+    CalificacionComponent,
+    FormComponent
   ]
 })
 export class AppModule { }
