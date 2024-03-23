@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, input } from '@angular/core';
 import { Auto } from '../interface/auto.interface';
 import { ListaautosService } from '../listaautos.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-listageneral',
@@ -34,7 +35,7 @@ set filtro(data:string){
   
 
   listAutos: Auto []= [];
-  constructor(private listaautosService: ListaautosService) {
+  constructor(private listaautosService: ListaautosService, private fb: FormBuilder) {
    this.listaautosService.getAutos().subscribe(data =>{this.listAutos=data});
    
    }

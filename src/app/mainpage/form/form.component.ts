@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ListaautosService } from '../../listaautos.service';
+import { Auto } from '../../interface/auto.interface';
 
 @Component({
   selector: 'app-form',
@@ -10,20 +11,15 @@ import { ListaautosService } from '../../listaautos.service';
 })
 export class FormComponent implements OnInit {
 
-  
 
-  autoForm: FormGroup
-  constructor(fb: FormBuilder, private  autosService: ListaautosService, private route: ActivatedRoute,) {
-    this.autoForm = fb.group({
-      Imagen: [
-        '',
-        [
-        Validators.required,
-        Validators.maxLength(400),
-        Validators.minLength(5),
-        ]
+  autoForm: FormGroup;
+  constructor(private fb: FormBuilder, private  autosService: ListaautosService) {
+
+
+    this.autoForm = this.fb.group({
+      'Imagen': [
       ],
-      Marca: [
+      'Marca': [
         '',
         [
         Validators.required,
@@ -31,7 +27,7 @@ export class FormComponent implements OnInit {
         Validators.maxLength(20),
         ]
       ],
-      Modelo: [
+      'Modelo' :[
         '',
         [
         Validators.required,
@@ -39,7 +35,7 @@ export class FormComponent implements OnInit {
         Validators.maxLength(20),
         ]
       ],
-      Año: [
+      'Año': [
         '',
         [
         Validators.required,
@@ -48,7 +44,7 @@ export class FormComponent implements OnInit {
         Validators.pattern("^[0-9]*$")
         ]
       ],
-      Color: [
+      'Color' : [
         '',
         [
         Validators.required,
@@ -56,7 +52,7 @@ export class FormComponent implements OnInit {
         Validators.maxLength(25),
         ]
       ],
-      Kilometraje: [
+      'Kilometraje':  [
         '',
         [
         Validators.required,
@@ -65,7 +61,7 @@ export class FormComponent implements OnInit {
         Validators.pattern("^[0-9]*$"),
         ]
       ],
-      Precio: [
+      'Precio': [
         '',
         [
         Validators.required,
@@ -74,7 +70,7 @@ export class FormComponent implements OnInit {
         Validators.pattern("^[0-9]*$"),
         ]
       ],
-      Calificacion: [
+      'Calificacion': [
         '',
         [
         Validators.required,
@@ -99,5 +95,10 @@ Submit(){
     id: this.autosService.listautos.length +1,
     ...this.autoForm.value,
   });
+}
+
+Guardar(){
+  let Vehiculo: Auto = { ...this.autoForm.value};
+  this.autosService.addAuto(Vehiculo);
 }
 }

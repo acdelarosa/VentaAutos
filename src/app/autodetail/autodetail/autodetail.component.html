@@ -10,34 +10,32 @@
 
   <div class="row">
 
+    <img src="{{carro?.image}}" alt="{{carro?.modelo}}" class="img-thumbnail">
+
 <div class="col-6">
 
-<img src="{{carro?.image}}" alt="{{carro?.modelo}}">
-<p>
- Color: {{carro?.color}}
-</p>
-<p>
-  {{carro?.kilometraje  }} km
-</p>
-<p>
- Año: {{carro?.anio}}
 
-</p>
 
-<p>
-  Calificación: {{carro?.calificacion}}
-</p>
 
-<p>
-  Precio: {{carro?.precio }}
-  
-</p>
+<label for="staticCodigo" class=".col-md-8 h5"> Color: </label>
+<p class=".col-md-4"> {{carro?.color}} </p>
+
+<label for="staticCodigo" class=".col-md-8 h5"> Kilometraje: </label>
+<p class=".col-md-4">   {{carro?.kilometraje | number }} km </p>
+<label for="staticCodigo" class=".col-md-8 h5"> Año: </label>
+<p class=".col-xs-6">  {{carro?.anio}}</p>
+<label for="staticCodigo" class=".col-md-8 h5"> Calificación: </label>
+<p class=".col-md-4">  {{carro?.calificacion}} </p>
+<label for="staticCodigo" class=".col-md-8 h5"> Precio: </label>
+<p class=".col-md-4">   {{carro?.precio | currency }} </p>
 </div>
 
 </div>
 
-<div class="col-md-4 mb-4 ms-3">
-  <button class="btn btn-secondary" [routerLink]="['/']" > Volver</button>
+<div class="col-md-4">
+  <button class="btn btn-secondary" [routerLink]="['/']" > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+  </svg> Volver</button>
 </div>
 
 </div>
