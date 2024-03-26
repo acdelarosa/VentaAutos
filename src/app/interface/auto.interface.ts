@@ -1,6 +1,6 @@
 export interface Auto {
     image?: string;
-    id: number;
+    codigo?: number;
     marca: string;
     modelo: string;
     anio: number;
@@ -9,3 +9,4 @@ export interface Auto {
     precio: any;
     calificacion: number
 }
+

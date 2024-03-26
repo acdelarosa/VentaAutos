@@ -1,126 +1,131 @@
 <div class="card">
-<form [formGroup]="autoForm" (submit)="Submit()" class="m-3">
+  <form [formGroup]="autoForm" (submit)="Submit()" class="m-3">
 
-  <div class="card-header">
-
-
-
-    <p class="h1"> Creación de Vehículo</p>
+    <div class="card-header">
 
 
 
-  </div>
-
-  <div class="row-gap-3 m-5 card-body">
-
-    <div>
-      <label for="staticCodigo" class="col-sm-2 col-form-label">Imagen:</label>
-
-      <input type="text" class="form-control w-50" placeholder="Imagen del Vehículo" formControlName="Imagen" name="Imagen">
+      <p class="h1"> Creación de Vehículo</p>
 
 
-      <div class="alert alert-danger w-50 mt-4"
-        *ngIf="autoForm.get('Imagen')?.invalid && autoForm.get('Imagen')?.touched">
-
-        Este campo es obligatorio
-      </div>
 
     </div>
 
+    <div class="row-gap-3 m-5 card-body">
 
-    <div>
-      <label for="staticCodigo" class="col-sm-2 col-form-label">Marca:</label>
+      <div>
+        <label for="staticCodigo" class="col-sm-2 col-form-label">Imagen:</label>
 
-      <input type="text" class="form-control w-50" placeholder="Marca del Vehículo"  name="Marca" formControlName="Marca">
+        <input type="text" class="form-control w-50" placeholder="Imagen del Vehículo" formControlName="Imagen">
 
-      <div class="alert alert-danger w-50 mt-4"
-        *ngIf="autoForm.get('Marca')?.invalid && autoForm.get('Marca')?.touched">
-        Este campo es obligatorio y debe tener entre 3 y 20 caractéres
+
+        <div class="alert alert-danger w-50 mt-4"
+          *ngIf="autoForm.get('Imagen')?.invalid && autoForm.get('Imagen')?.touched">
+
+          Este campo es obligatorio
+        </div>
+
       </div>
 
-    </div>
 
+      <div>
+        <label for="staticCodigo" class="col-sm-2 col-form-label">Marca:</label>
 
-    <div>
-      <label for="staticCodigo" class="col-sm-2 col-form-label">Modelo:</label>
-      <input type="text" class="form-control w-50" placeholder="Modelo del Vehículo" formControlName="Modelo"  name="Modelo">
+        <input type="text" class="form-control w-50" placeholder="Marca del Vehículo" formControlName="Marca">
 
-      <div class="alert alert-danger w-50 mt-4"
-        *ngIf="autoForm.get('Modelo')?.invalid && autoForm.get('Modelo')?.touched">
-        Este campo es obligatorio y debe tener entre 3 y 20 caractéres
+        <div class="alert alert-danger w-50 mt-4"
+          *ngIf="autoForm.get('Marca')?.invalid && autoForm.get('Marca')?.touched">
+          Este campo es obligatorio y debe tener entre 3 y 20 caractéres
+        </div>
+
       </div>
-    </div>
 
-    <div>
-      <label for="staticCodigo" class="col-sm-2 col-form-label">Año:</label>
-      <input type="number" class="form-control w-50" placeholder="Año del Vehículo" formControlName="Año"  name="Año">
 
-      <div class="alert alert-danger w-50 mt-4" *ngIf="autoForm.get('Año')?.invalid && 
+      <div>
+        <label for="staticCodigo" class="col-sm-2 col-form-label">Modelo:</label>
+        <input type="text" class="form-control w-50" placeholder="Modelo del Vehículo" formControlName="Modelo">
+
+        <div class="alert alert-danger w-50 mt-4"
+          *ngIf="autoForm.get('Modelo')?.invalid && autoForm.get('Modelo')?.touched">
+          Este campo es obligatorio y debe tener entre 3 y 20 caractéres
+        </div>
+      </div>
+
+      <div>
+        <label for="staticCodigo" class="col-sm-2 col-form-label">Año:</label>
+        <input type="number" class="form-control w-50" placeholder="Año del Vehículo" formControlName="Año">
+
+        <div class="alert alert-danger w-50 mt-4" *ngIf="autoForm.get('Año')?.invalid && 
        autoForm.get('Año')?.touched">
-        Este campo es obligatorio y solo acepta números
+          Este campo es obligatorio y solo acepta números
+        </div>
       </div>
+
+
+      <div>
+        <label for="staticCodigo" class="col-sm-2 col-form-label">Color:</label>
+        <input type="text" class="form-control w-50" placeholder="Color del Vehículo" formControlName="Color">
+        <div class="alert alert-danger w-50 mt-4"
+          *ngIf="autoForm.get('Color')?.invalid && autoForm.get('Color')?.touched">
+          Este campo es obligatorio y debe tener entre 3 y 25 caractéres
+        </div>
+      </div>
+
+
+      <div>
+        <label for="staticCodigo" class="col-sm-2 col-form-label">Kilometraje:</label>
+        <input type="number" class="form-control w-50" placeholder="Kilometraje del Vehículo"
+          formControlName="Kilometraje">
+        <div class="alert alert-danger w-50 mt-4"
+          *ngIf="autoForm.get('Kilometraje')?.invalid && autoForm.get('Kilometraje')?.touched">
+          Este campo es obligatorio y solo acepta entre 3 y 20 números
+        </div>
+      </div>
+
+
+      <div>
+        <label for="staticCodigo" class="col-sm-2 col-form-label">Precio:</label>
+        <input type="number" class="form-control w-50" placeholder="Precio del Vehículo" formControlName="Precio">
+
+        <div class="alert alert-danger w-50 mt-4"
+          *ngIf="autoForm.get('Precio')?.invalid && autoForm.get('Precio')?.touched">
+          Este campo es obligatorio y solo acepta entre 3 y 20 números
+        </div>
+      </div>
+
+
+
+
+      <div>
+        <label for="staticCodigo" class="col-sm-2 col-form-label">Calificación</label>
+        <input type="number" class="form-control w-50" placeholder="Calificación del Vehículo"
+          formControlName="Calificacion">
+        <div class="alert alert-danger w-50"
+          *ngIf="autoForm.get('Calificación')?.invalid && autoForm.get('Calificación')?.touched">
+          Este campo es obligatorio y solo acepta 1 número
+        </div>
+      </div>
+
+
+
     </div>
 
-
-    <div>
-      <label for="staticCodigo" class="col-sm-2 col-form-label">Color:</label>
-      <input type="text" class="form-control w-50" placeholder="Color del Vehículo" formControlName="Color" name="Color">
-      <div class="alert alert-danger w-50 mt-4"
-        *ngIf="autoForm.get('Color')?.invalid && autoForm.get('Color')?.touched">
-        Este campo es obligatorio y debe tener entre 3 y 25 caractéres
+    <div class="row">
+      <div class="col-3">
+        <button (click)="Guardar()" class="btn btn-info">
+          Guardar
+        </button>
       </div>
     </div>
-
-
-    <div>
-      <label for="staticCodigo" class="col-sm-2 col-form-label">Kilometraje:</label>
-      <input type="number" class="form-control w-50" placeholder="Kilometraje del Vehículo" formControlName="Kilometraje"  name="Kilometraje">
-      <div class="alert alert-danger w-50 mt-4"
-        *ngIf="autoForm.get('Kilometraje')?.invalid && autoForm.get('Kilometraje')?.touched">
-        Este campo es obligatorio y solo acepta entre 3 y 20 números
-      </div>
-    </div>
-
-
-    <div>
-      <label for="staticCodigo" class="col-sm-2 col-form-label">Precio:</label>
-      <input type="number" class="form-control w-50" placeholder="Precio del Vehículo" formControlName="Precio" name="Precio">
-
-      <div class="alert alert-danger w-50 mt-4"
-        *ngIf="autoForm.get('Precio')?.invalid && autoForm.get('Precio')?.touched">
-        Este campo es obligatorio y solo acepta entre 3 y 20 números
-      </div>
-    </div>
-
-
-
-
-    <div>
-      <label for="staticCodigo" class="col-sm-2 col-form-label">Calificación</label>
-      <input type="number" class="form-control w-50" placeholder="Calificación del Vehículo"
-        formControlName="Calificacion"  name="Calificación">
-      <div class="alert alert-danger w-50"
-        *ngIf="autoForm.get('Calificación')?.invalid && autoForm.get('Calificación')?.touched">
-        Este campo es obligatorio y solo acepta 1 número
-      </div>
-    </div>
-
-
-
-  </div>
-
-  <div class="row">
-  <button type="submit()" class="btn btn-info">
-    Guardar
-  </button>
-</div>
-</form>
+  </form>
 
 </div>
 
 
 <div class="col-md-4 mb-4 ms-3">
-  <button class="btn btn-secondary" [routerLink]="['/']"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
-    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
-  </svg> Volver</button>
+  <button class="btn btn-secondary" [routerLink]="['/']"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+      fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+      <path
+        d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+    </svg> Volver</button>
 </div>

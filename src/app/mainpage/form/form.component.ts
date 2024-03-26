@@ -86,19 +86,33 @@ export class FormComponent implements OnInit {
   }
 
 
-Submit(){
+ Submit(){
    if (!this.autoForm.valid) {
     console.log('no es válido');
     return;
   }
   this.autosService.addAuto({
-    id: this.autosService.listautos.length +1,
+    codigo: this.autosService.listautos.length +1,
     ...this.autoForm.value,
   });
-}
+} 
 
 Guardar(){
-  let Vehiculo: Auto = { ...this.autoForm.value};
+  /* let Vehiculo: Auto = { ...this.autoForm.value};
   this.autosService.addAuto(Vehiculo);
+  console.log('Formulario',  this.autoForm.value) */
+  if(this.autoForm.valid){
+    this.autosService.insertVehiculo({...this.autoForm.value}).subscribe(
+     respuesta =>{
+      if(respuesta.codigo== '1'){
+        alert("Vehículo registrado con éxito")
+      }
+     }
+    )
+    alert('Guardado con éxito')
+  } else{
+    alert('Faltan campos por llenar');
+  }
+  
 }
 }

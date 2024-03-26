@@ -48,7 +48,12 @@ set filtro(data:string){
    }
 
   ngOnInit() {
-    this.consultaVehiculos();
+    this.listaautosService.getAutos().subscribe(respuesta =>{
+      console.log(respuesta);
+      this.listAutos = respuesta
+    }
+
+    );
 
   }
 

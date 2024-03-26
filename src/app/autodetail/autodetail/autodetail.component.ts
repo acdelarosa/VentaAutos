@@ -20,7 +20,7 @@ carro: Auto | undefined
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      this.carro = this.autoService.getAutosbyId(params['id']);
+      this.carro = this.autoService.getAutosbyId(params['codigo']);
     });
   }
 

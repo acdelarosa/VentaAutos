@@ -10,6 +10,7 @@ import { MainpageComponent } from './mainpage/mainpage/mainpage.component';
 import { ListageneralComponent } from './listageneral/listageneral.component';
 import { AutodetailComponent } from './autodetail/autodetail/autodetail.component';
 import { CalificacionComponent } from './utilitarios/calificacion/calificacion.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [ AppComponent, NavbarComponent, MainpageComponent, FormComponent, ListageneralComponent, AutodetailComponent, CalificacionComponent],
@@ -19,6 +20,7 @@ import { CalificacionComponent } from './utilitarios/calificacion/calificacion.c
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
