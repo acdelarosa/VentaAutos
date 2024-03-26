@@ -1,5 +1,5 @@
 export interface Auto {
-    image?: string;
+    foto?: string;
     codigo?: number;
     marca: string;
     modelo: string;

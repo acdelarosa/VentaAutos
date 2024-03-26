@@ -14,7 +14,7 @@ export class ListaautosService {
 
   listautos: Auto[] = [
     {
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6jxtTqW6xP-uaDmG2lmuv0cABB2XbCtwSshlVpZ7tzg&s',
+      foto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6jxtTqW6xP-uaDmG2lmuv0cABB2XbCtwSshlVpZ7tzg&s',
       codigo: 1,
       marca: 'Ferrari',
       modelo: 'Portofino',
@@ -24,8 +24,8 @@ export class ListaautosService {
       precio: 350000,
       calificacion: 3
     },
-    {
-      image: 'https://img.remediosdigitales.com/875b45/mercedes-amg-g65-final-edition-01/840_560.jpg',
+   /*  {
+      foto: 'https://img.remediosdigitales.com/875b45/mercedes-amg-g65-final-edition-01/840_560.jpg',
       codigo: 2,
       marca: 'Mercedes Benz',
       modelo: 'Wagon clase G',
@@ -34,9 +34,9 @@ export class ListaautosService {
       kilometraje: 15000,
       precio: 160000,
       calificacion: 5
-    },
+    }, */
     {
-      image: 'https://www.clickheretesting.com/ParksLincolnTampa/research/2024/navigator/images/mlp-img-ext.jpg',
+      foto: 'https://www.clickheretesting.com/ParksLincolnTampa/research/2024/navigator/images/mlp-img-ext.jpg',
       codigo: 3,
       marca: 'Lincoln',
       modelo: 'Navigator',
@@ -71,7 +71,6 @@ export class ListaautosService {
   }
 
   insertVehiculo(vehiculo: Auto) {
-  
     return this.http.post<Respuesta>(this.baseUrl +"vehiculo/", vehiculo, this.httpOptions);
   }
 

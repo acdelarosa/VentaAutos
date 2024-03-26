@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ListaautosService } from '../../listaautos.service';
 import { Auto } from '../../interface/auto.interface';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-form',
@@ -17,7 +21,13 @@ export class FormComponent implements OnInit {
 
 
     this.autoForm = this.fb.group({
-      'Imagen': [
+      'Foto': [
+      ],
+      'Codigo': [
+        '',
+        [
+        Validators.required
+        ]
       ],
       'Marca': [
         '',
@@ -98,14 +108,16 @@ export class FormComponent implements OnInit {
 } 
 
 Guardar(){
-  /* let Vehiculo: Auto = { ...this.autoForm.value};
-  this.autosService.addAuto(Vehiculo);
-  console.log('Formulario',  this.autoForm.value) */
   if(this.autoForm.valid){
     this.autosService.insertVehiculo({...this.autoForm.value}).subscribe(
      respuesta =>{
       if(respuesta.codigo== '1'){
-        alert("Vehículo registrado con éxito")
+        alert("Vehículo registrado con éxito"
+        )/* .then(res  => {
+          this.autoForm.reset()
+        }) */
+      } else{
+        alert('No se pudo registrar el mensaje'+ respuesta.mensaje)
       }
      }
     )

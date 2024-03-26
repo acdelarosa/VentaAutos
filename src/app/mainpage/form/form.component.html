@@ -1,5 +1,5 @@
 <div class="card">
-  <form [formGroup]="autoForm" (submit)="Submit()" class="m-3">
+  <form [formGroup]="autoForm" class="m-3">
 
     <div class="card-header">
 
@@ -14,19 +14,30 @@
     <div class="row-gap-3 m-5 card-body">
 
       <div>
-        <label for="staticCodigo" class="col-sm-2 col-form-label">Imagen:</label>
+        <label for="staticCodigo" class="col-sm-2 col-form-label">Foto:</label>
 
-        <input type="text" class="form-control w-50" placeholder="Imagen del Vehículo" formControlName="Imagen">
+        <input type="text" class="form-control w-50" placeholder="Imagen del Vehículo" formControlName="Foto">
 
 
         <div class="alert alert-danger w-50 mt-4"
-          *ngIf="autoForm.get('Imagen')?.invalid && autoForm.get('Imagen')?.touched">
+          *ngIf="autoForm.get('Foto')?.invalid && autoForm.get('Foto')?.touched">
 
           Este campo es obligatorio
         </div>
 
       </div>
 
+      <div>
+        <label for="staticCodigo" class="col-sm-2 col-form-label">Codigo:</label>
+
+        <input type="text" class="form-control w-50" placeholder="Codigo" formControlName="Codigo">
+
+        <div class="alert alert-danger w-50 mt-4"
+          *ngIf="autoForm.get('Marca')?.invalid && autoForm.get('Marca')?.touched">
+          Este campo es obligatorio y debe tener entre 3 y 20 caractéres
+        </div>
+
+      </div>
 
       <div>
         <label for="staticCodigo" class="col-sm-2 col-form-label">Marca:</label>
