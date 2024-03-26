@@ -4,6 +4,7 @@ import { MainpageComponent } from './mainpage/mainpage/mainpage.component';
 import { AutodetailComponent } from './autodetail/autodetail/autodetail.component';
 import { ErrorComponent } from './404/error/error.component';
 import { FormComponent } from './mainpage/form/form.component';
+import { EditarComponent } from './autodetail/autodetail/editarauto/editar/editar.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
     component: MainpageComponent,
   },
   {
-    path: 'auto/:id',
+    path: 'auto/:codigo',
     component: AutodetailComponent ,
   },
   {
@@ -19,9 +20,14 @@ const routes: Routes = [
     component: FormComponent,
   },
   {
+    path: 'editarVehiculo/:codigo',
+    component: EditarComponent,
+  },
+  {
     path: '**',
     component: ErrorComponent,
-  },
+  }
+ 
 ];
 
 @NgModule({

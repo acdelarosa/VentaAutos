@@ -15,7 +15,7 @@ export class ListaautosService {
   listautos: Auto[] = [
     {
       foto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6jxtTqW6xP-uaDmG2lmuv0cABB2XbCtwSshlVpZ7tzg&s',
-      codigo: 1,
+      codigo: '1',
       marca: 'Ferrari',
       modelo: 'Portofino',
       anio: 2024,
@@ -37,7 +37,7 @@ export class ListaautosService {
     }, */
     {
       foto: 'https://www.clickheretesting.com/ParksLincolnTampa/research/2024/navigator/images/mlp-img-ext.jpg',
-      codigo: 3,
+      codigo: '3',
       marca: 'Lincoln',
       modelo: 'Navigator',
       anio: 2024,
@@ -56,7 +56,9 @@ export class ListaautosService {
   return this.autosSubject.asObservable();
   } */
 
-
+  httpOptions ={
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  }
 
   getAutos(): Observable<Auto[]> {
     return this.http.get<Respuesta>(this.baseUrl + "vehiculos/").pipe(
@@ -66,9 +68,7 @@ export class ListaautosService {
     )
   }
 
-  private httpOptions ={
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-  }
+ 
 
   insertVehiculo(vehiculo: Auto) {
     return this.http.post<Respuesta>(this.baseUrl +"vehiculo/", vehiculo, this.httpOptions);
@@ -82,9 +82,21 @@ export class ListaautosService {
     return escucha
   }
 
-  getAutosbyId(id: number): Auto | undefined {
+  getAutosbyId(id: string): Auto | undefined {
     return this.listautos.find((auto) => auto.codigo == id);
 
+  }
+
+  getAutosbyCodigo(codigo: string): Observable<Respuesta>{
+return this.http.get<Respuesta>(this.baseUrl+"vehiculo/"+codigo);
+  }
+
+  actualizarVehiculo(vehiculo: Auto, codigo: string): Observable<Respuesta>{
+return this.http.put<Respuesta>(this.baseUrl+"vehiculo/"+codigo, vehiculo, this.httpOptions)
+  }
+
+  eliminarVehiculo(codigo: string): Observable<Respuesta>{
+return this.http.delete<Respuesta>(this.baseUrl+"vehiculo/"+codigo)
   }
 
 
@@ -96,12 +108,12 @@ export class ListaautosService {
   }
 
 
-
-  deleteAuto(id: number): void {
+/* 
+  deleteAuto(id: string): void {
     this.listautos = this.listautos.filter((auto) => auto.codigo !== id);
     this.autosSubject.next(this.listautos);
   }
-
+ */
 
 
 }

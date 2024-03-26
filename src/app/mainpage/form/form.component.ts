@@ -3,8 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ListaautosService } from '../../listaautos.service';
 import { Auto } from '../../interface/auto.interface';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import Swal from 'sweetalert2';
 
 
 
@@ -21,15 +20,16 @@ export class FormComponent implements OnInit {
 
 
     this.autoForm = this.fb.group({
-      'Foto': [
+      'foto': [
+        '',
       ],
-      'Codigo': [
+      'codigo': [
         '',
         [
         Validators.required
         ]
       ],
-      'Marca': [
+      'marca': [
         '',
         [
         Validators.required,
@@ -37,7 +37,7 @@ export class FormComponent implements OnInit {
         Validators.maxLength(20),
         ]
       ],
-      'Modelo' :[
+      'modelo' :[
         '',
         [
         Validators.required,
@@ -45,7 +45,7 @@ export class FormComponent implements OnInit {
         Validators.maxLength(20),
         ]
       ],
-      'Año': [
+      'anio': [
         '',
         [
         Validators.required,
@@ -54,7 +54,7 @@ export class FormComponent implements OnInit {
         Validators.pattern("^[0-9]*$")
         ]
       ],
-      'Color' : [
+      'color' : [
         '',
         [
         Validators.required,
@@ -62,7 +62,7 @@ export class FormComponent implements OnInit {
         Validators.maxLength(25),
         ]
       ],
-      'Kilometraje':  [
+      'kilometraje':  [
         '',
         [
         Validators.required,
@@ -71,7 +71,7 @@ export class FormComponent implements OnInit {
         Validators.pattern("^[0-9]*$"),
         ]
       ],
-      'Precio': [
+      'precio': [
         '',
         [
         Validators.required,
@@ -80,7 +80,7 @@ export class FormComponent implements OnInit {
         Validators.pattern("^[0-9]*$"),
         ]
       ],
-      'Calificacion': [
+      'calificacion': [
         '',
         [
         Validators.required,
@@ -112,18 +112,28 @@ Guardar(){
     this.autosService.insertVehiculo({...this.autoForm.value}).subscribe(
      respuesta =>{
       if(respuesta.codigo== '1'){
-        alert("Vehículo registrado con éxito"
-        )/* .then(res  => {
+        Swal.fire({
+          title: 'Mensaje',
+         text: 'Vehículo registrado con éxito',
+          icon: "success"
+        }).then(res  => {
           this.autoForm.reset()
-        }) */
+        })  
       } else{
-        alert('No se pudo registrar el mensaje'+ respuesta.mensaje)
+        Swal.fire({
+          title: 'Mensaje',
+         text: 'No se pudo registrar el vehículo',
+          icon: "error"
+        })
       }
      }
     )
-    alert('Guardado con éxito')
-  } else{
-    alert('Faltan campos por llenar');
+     } else{
+      Swal.fire({
+        title: 'Mensaje',
+       text: 'Faltan campos por llenar',
+        icon: "error"
+      });
   }
   
 }

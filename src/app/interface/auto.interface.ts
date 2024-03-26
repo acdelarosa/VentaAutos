@@ -1,6 +1,6 @@
 export interface Auto {
     foto?: string;
-    codigo?: number;
+    codigo?: string  | any;
     marca: string;
     modelo: string;
     anio: number;

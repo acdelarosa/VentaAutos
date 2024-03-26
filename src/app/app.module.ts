@@ -10,10 +10,13 @@ import { MainpageComponent } from './mainpage/mainpage/mainpage.component';
 import { ListageneralComponent } from './listageneral/listageneral.component';
 import { AutodetailComponent } from './autodetail/autodetail/autodetail.component';
 import { CalificacionComponent } from './utilitarios/calificacion/calificacion.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { EditarComponent } from './autodetail/autodetail/editarauto/editar/editar.component';
+import { UserInterceptorService } from './interceptores/userInterceptor.service';
 
 @NgModule({
-  declarations: [ AppComponent, NavbarComponent, MainpageComponent, FormComponent, ListageneralComponent, AutodetailComponent, CalificacionComponent],
+  declarations: [ AppComponent, NavbarComponent, MainpageComponent, FormComponent, 
+    ListageneralComponent, AutodetailComponent, CalificacionComponent, EditarComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -22,11 +25,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: UserInterceptorService, multi: true}
+  ],
   bootstrap: [AppComponent],
   exports:[
     CalificacionComponent,
-    FormComponent
+    FormComponent,
+   
   ]
 })
 export class AppModule { }

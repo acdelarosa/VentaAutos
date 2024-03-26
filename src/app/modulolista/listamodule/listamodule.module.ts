@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
     CommonModule, RouterModule, ReactiveFormsModule, FormsModule],
 
   declarations: [
-    ListamoduleComponent,]
+    ListamoduleComponent, ]
 
 })
 export class ListamoduleModule { }
