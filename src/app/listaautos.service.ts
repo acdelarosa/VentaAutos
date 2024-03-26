@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Auto } from './interface/auto.interface';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -60,8 +60,12 @@ export class ListaautosService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   }
 
-  getAutos(): Observable<Auto[]> {
-    return this.http.get<Respuesta>(this.baseUrl + "vehiculos/").pipe(
+  getAutos(filtro?: string | any, rows?:number, page?: number): Observable<Auto[]> {
+    let body = new HttpParams();
+    body = filtro? body.set('filtro', filtro): body;
+    body = rows? body.set('rows', rows): body;
+    body = page? body.set ('page', page): body;
+    return this.http.get<Respuesta>(this.baseUrl + "vehiculos/", {params: body}).pipe(
       map(respuesta => {
         return respuesta.data
       })
@@ -74,13 +78,13 @@ export class ListaautosService {
     return this.http.post<Respuesta>(this.baseUrl +"vehiculo/", vehiculo, this.httpOptions);
   }
 
-  getVehiculos(filtro: any): Observable<Array<Auto>> {
+ /*  getVehiculos(filtro?: string | any, rows?:number, page?: number): Observable<Array<Auto>> {
     const escucha: Observable<Array<Auto>> = new Observable(escuchando => {
       let lista = this.listautos.filter(elem => elem.marca.toLowerCase().includes(filtro.toLowerCase()))
       escuchando.next(lista)
     })
     return escucha
-  }
+  } */
 
   getAutosbyId(id: string): Auto | undefined {
     return this.listautos.find((auto) => auto.codigo == id);

@@ -15,15 +15,19 @@ export class ListageneralComponent implements OnInit {
   /* filtro: string = ''; */
 
 
-  private _filtro: string = '';
-  get filtro() {
+  //private _filtro: string = '';
+  public rows: number = 10;
+  public page: number = 1;
+  public filtro: string = '';
+
+ /*  get filtro() {
     return this._filtro
   }
 
   set filtro(data: string) {
     this._filtro = data
     this.consultaVehiculos();
-  }
+  } */
 
   @Input() valor: string = '';
 
@@ -41,19 +45,14 @@ export class ListageneralComponent implements OnInit {
 
   }
 
-
-
-  /*  deleteAuto(id: number): void {
-    this.listaautosService.deleteAuto(id);
-    this.listaautosService.getAutos();
-   } */
-
   ngOnInit() {
     
 this.consultarVehiculos()
   }
+
+
 consultarVehiculos(){
-  this.listaautosService.getAutos().subscribe(respuesta => {
+  this.listaautosService.getAutos(this.filtro, this.rows, this.page).subscribe(respuesta => {
     console.log(respuesta);
     this.listaVehiculos = respuesta
   }
@@ -64,8 +63,9 @@ consultarVehiculos(){
 
   consultaVehiculos() {
 
-    this.listaautosService.getVehiculos(this.filtro).subscribe(data => {
-      this.listaVehiculos = data;
+    this.listaautosService.getAutos(this.filtro).subscribe(respuesta => {
+      console.log(respuesta);
+      this.listaVehiculos = respuesta;
     })
   }
 
