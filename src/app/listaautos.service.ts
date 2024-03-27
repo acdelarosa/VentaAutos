@@ -24,17 +24,17 @@ export class ListaautosService {
       precio: 350000,
       calificacion: 3
     },
-   /*  {
-      foto: 'https://img.remediosdigitales.com/875b45/mercedes-amg-g65-final-edition-01/840_560.jpg',
-      codigo: 2,
-      marca: 'Mercedes Benz',
-      modelo: 'Wagon clase G',
-      anio: 2024,
-      color: 'negro perlado',
-      kilometraje: 15000,
-      precio: 160000,
-      calificacion: 5
-    }, */
+    /*  {
+       foto: 'https://img.remediosdigitales.com/875b45/mercedes-amg-g65-final-edition-01/840_560.jpg',
+       codigo: 2,
+       marca: 'Mercedes Benz',
+       modelo: 'Wagon clase G',
+       anio: 2024,
+       color: 'negro perlado',
+       kilometraje: 15000,
+       precio: 160000,
+       calificacion: 5
+     }, */
     {
       foto: 'https://www.clickheretesting.com/ParksLincolnTampa/research/2024/navigator/images/mlp-img-ext.jpg',
       codigo: '3',
@@ -56,51 +56,53 @@ export class ListaautosService {
   return this.autosSubject.asObservable();
   } */
 
-  httpOptions ={
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
-  getAutos(filtro?: string | any, rows?:number, page?: number): Observable<Auto[]> {
+  getAutos(filtro?: string | any, rows?: number, page?: number): Observable<Respuesta> {
     let body = new HttpParams();
-    body = filtro? body.set('filtro', filtro): body;
-    body = rows? body.set('rows', rows): body;
-    body = page? body.set ('page', page): body;
-    return this.http.get<Respuesta>(this.baseUrl + "vehiculos/", {params: body}).pipe(
+    body = filtro ? body.set('filtro', filtro) : body;
+    body = rows ? body.set('rows', rows) : body;
+    body = page ? body.set('page', page) : body;
+    /* return this.http.get<Respuesta>(this.baseUrl + "vehiculos/", {params: body}).pipe(
       map(respuesta => {
         return respuesta.data
-      })
-    )
+      }) 
+    )*/
+    return this.http.get<Respuesta>(this.baseUrl + "vehiculos/", { params: body });
+
   }
 
- 
+
 
   insertVehiculo(vehiculo: Auto) {
-    return this.http.post<Respuesta>(this.baseUrl +"vehiculo/", vehiculo, this.httpOptions);
+    return this.http.post<Respuesta>(this.baseUrl + "vehiculo/", vehiculo, this.httpOptions);
   }
 
- /*  getVehiculos(filtro?: string | any, rows?:number, page?: number): Observable<Array<Auto>> {
-    const escucha: Observable<Array<Auto>> = new Observable(escuchando => {
-      let lista = this.listautos.filter(elem => elem.marca.toLowerCase().includes(filtro.toLowerCase()))
-      escuchando.next(lista)
-    })
-    return escucha
-  } */
+  /*  getVehiculos(filtro?: string | any, rows?:number, page?: number): Observable<Array<Auto>> {
+     const escucha: Observable<Array<Auto>> = new Observable(escuchando => {
+       let lista = this.listautos.filter(elem => elem.marca.toLowerCase().includes(filtro.toLowerCase()))
+       escuchando.next(lista)
+     })
+     return escucha
+   } */
 
   getAutosbyId(id: string): Auto | undefined {
     return this.listautos.find((auto) => auto.codigo == id);
 
   }
 
-  getAutosbyCodigo(codigo: string): Observable<Respuesta>{
-return this.http.get<Respuesta>(this.baseUrl+"vehiculo/"+codigo);
+  getAutosbyCodigo(codigo: string): Observable<Respuesta> {
+    return this.http.get<Respuesta>(this.baseUrl + "vehiculo/" + codigo);
   }
 
-  actualizarVehiculo(vehiculo: Auto, codigo: string): Observable<Respuesta>{
-return this.http.put<Respuesta>(this.baseUrl+"vehiculo/"+codigo, vehiculo, this.httpOptions)
+  actualizarVehiculo(vehiculo: Auto, codigo: string): Observable<Respuesta> {
+    return this.http.put<Respuesta>(this.baseUrl + "vehiculo/" + codigo, vehiculo, this.httpOptions)
   }
 
-  eliminarVehiculo(codigo: string): Observable<Respuesta>{
-return this.http.delete<Respuesta>(this.baseUrl+"vehiculo/"+codigo)
+  eliminarVehiculo(codigo: string): Observable<Respuesta> {
+    return this.http.delete<Respuesta>(this.baseUrl + "vehiculo/" + codigo)
   }
 
 
@@ -112,12 +114,12 @@ return this.http.delete<Respuesta>(this.baseUrl+"vehiculo/"+codigo)
   }
 
 
-/* 
-  deleteAuto(id: string): void {
-    this.listautos = this.listautos.filter((auto) => auto.codigo !== id);
-    this.autosSubject.next(this.listautos);
-  }
- */
+  /* 
+    deleteAuto(id: string): void {
+      this.listautos = this.listautos.filter((auto) => auto.codigo !== id);
+      this.autosSubject.next(this.listautos);
+    }
+   */
 
 
 }
@@ -127,6 +129,10 @@ export interface Respuesta {
   codigo: string;
   mensaje: string;
   data: Array<Auto> | Auto | any;
+  rows: number;
+  pages: number;
+  records: number;
+  page: number;
 
 }
 

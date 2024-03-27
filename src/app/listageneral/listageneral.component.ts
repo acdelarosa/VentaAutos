@@ -19,6 +19,8 @@ export class ListageneralComponent implements OnInit {
   public rows: number = 10;
   public page: number = 1;
   public filtro: string = '';
+  public listaVehiculos: Array<Auto> = [];
+  public pages: number = 0;
 
  /*  get filtro() {
     return this._filtro
@@ -39,9 +41,9 @@ export class ListageneralComponent implements OnInit {
 
 
 
-  listaVehiculos: Auto[] = [];
+ 
   constructor(private listaautosService: ListaautosService, private fb: FormBuilder) {
-    this.listaautosService.getAutos().subscribe(data => { this.listaVehiculos = data });
+  /*   this.listaautosService.getAutos().subscribe(data => { this.listaVehiculos = data}); */
 
   }
 
@@ -53,21 +55,56 @@ this.consultarVehiculos()
 
 consultarVehiculos(){
   this.listaautosService.getAutos(this.filtro, this.rows, this.page).subscribe(respuesta => {
-    console.log(respuesta);
-    this.listaVehiculos = respuesta
+    if(respuesta.codigo == '1'){
+      this.listaVehiculos = respuesta.data;
+      this.pages = respuesta.pages;
+      this.paginar(respuesta.pages)
+    }
+    
   }
 
   );
 }
+
+cambiarPagina(pagina: number){
+this.page = pagina;
+this.consultarVehiculos();
+}
+
+listaDePaginas: Array <number> = [];
+
+
+paginar(pages: number, ){
+  this.listaDePaginas = [];
+for(let i = 1; i<=pages; i++){
+  this.listaDePaginas.push(i);
+}
+}
   
 
-  consultaVehiculos() {
-
-    this.listaautosService.getAutos(this.filtro).subscribe(respuesta => {
-      console.log(respuesta);
-      this.listaVehiculos = respuesta;
-    })
+siguiente(){
+  if(this.page < this.pages){
+    this.page++
+    this.consultarVehiculos();
   }
+}
+
+
+atras(){
+  if(this.page > this.pages){
+    this.page--
+    this.consultarVehiculos();
+  }
+  
+}
+
+ /*  consultaVehiculos() {
+
+    this.listaautosService.getAutos(this.filtro).subscribe(data => {
+      console.log(data);
+      this.listaVehiculos = data;
+    })
+  } */
 
 
   muestraImagen: boolean = true;
