@@ -1,33 +1,28 @@
 
-<p class="text-danger" *ngIf="!carro"> NO EXISTE EL VEHÍCULO </p>
+<!-- <p class="text-danger" *ngIf="!carro"> NO EXISTE EL VEHÍCULO </p> -->
 
 <div class="card">
-  <div class="card-header">
-    <h2> Vehículo {{carro?.marca}} {{carro?.modelo}} </h2>
+  <div class="card-header" >
+    <h2> Vehículo {{vehiculo?.marca}} {{vehiculo?.modelo}} </h2>
   </div>
 
 <div class="card-body">
 
   <div class="row">
 
-    <img src="{{carro?.foto}}" alt="{{carro?.modelo}}" class="img-thumbnail">
+    <img src="{{vehiculo?.foto}}" alt="{{vehiculo?.modelo}}" class="img-thumbnail">
 
 <div class="col-6">
 
 
-
-
-<label for="staticCodigo" class=".col-md-8 h5"> Color: </label>
-<p class=".col-md-4"> {{carro?.color}} </p>
-
 <label for="staticCodigo" class=".col-md-8 h5"> Kilometraje: </label>
-<p class=".col-md-4">   {{carro?.kilometraje | number }} km </p>
+<p class=".col-md-4">   {{vehiculo?.kilometraje| number }} km </p>
 <label for="staticCodigo" class=".col-md-8 h5"> Año: </label>
-<p class=".col-xs-6">  {{carro?.anio}}</p>
+<p class=".col-xs-6">  {{vehiculo?.anio}}</p>
 <label for="staticCodigo" class=".col-md-8 h5"> Calificación: </label>
-<p class=".col-md-4">  {{carro?.calificacion}} </p>
+<p class=".col-md-4">  {{vehiculo?.calificacion}} </p>
 <label for="staticCodigo" class=".col-md-8 h5"> Precio: </label>
-<p class=".col-md-4">   {{carro?.precio | currency }} </p>
+<p class=".col-md-4">   {{vehiculo?.precio| currency }} </p>
 </div>
 
 </div>

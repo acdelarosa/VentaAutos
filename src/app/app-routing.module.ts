@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'auto/:codigo',
-    component: AutodetailComponent ,
+    component: AutodetailComponent,
   },
   {
     path: 'form',
@@ -27,7 +27,7 @@ const routes: Routes = [
     path: '**',
     component: ErrorComponent,
   }
- 
+
 ];
 
 @NgModule({

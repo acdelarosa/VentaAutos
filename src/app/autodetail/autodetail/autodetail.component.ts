@@ -10,7 +10,10 @@ import { Auto } from '../../interface/auto.interface';
 })
 export class AutodetailComponent implements OnInit {
 
-carro: Auto | undefined
+carro: any = {};
+public listaVehiculos: Array<Auto> = [];
+public filtro: string = '';
+vehiculo?: Auto;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,8 +23,33 @@ carro: Auto | undefined
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      this.carro = this.autoService.getAutosbyId(params['codigo']);
+      this.autoService.getAutosbyCodigo(params['codigo']).subscribe((data)=>{
+        if (data.codigo == '1') {
+          this.vehiculo = data.data;
+          this.vehiculo?.foto
+          this.vehiculo?.codigo
+          this.vehiculo?.marca
+          this.vehiculo?.modelo
+          this.vehiculo?.anio
+          this.vehiculo?.kilometraje
+          this.vehiculo?.precio
+          this.vehiculo?.calificacion
+        }
+        
+      })
     });
+  }
+
+  consultarVehiculos(){
+    this.autoService.getAutos(this.filtro).subscribe(respuesta => {
+      if(respuesta.codigo == '1'){
+        this.listaVehiculos = respuesta.data;
+       
+      }
+      
+    }
+  
+    );
   }
 
   recepcion(dato: number){
